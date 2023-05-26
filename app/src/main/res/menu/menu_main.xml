@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/opcionLiga"
+        android:title="Mi Liga" />
+    <item
+        android:id="@+id/opcionEquipo"
+        android:title="Mi Equipo" />
+    <item
+        android:id="@+id/opcionJugadores"
+        android:title="Mis Jugadores" />
+    <item
+        android:id="@+id/opcionEstadisticas"
+        android:title="Estadisticas Equipo" />
+    <item
+        android:id="@+id/opcionPartidos"
+        android:title="Mis Partidos" />
+</menu>

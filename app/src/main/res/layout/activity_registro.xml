@@ -1,0 +1,145 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#24613B">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="121dp"
+        android:layout_height="117dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/logo" />
+
+    <EditText
+        android:id="@+id/et_usuario"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="140dp"
+        android:background="#528f66"
+        android:hint="Usuario"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#000000" />
+
+    <EditText
+        android:id="@+id/et_nombre"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/et_usuario"
+        android:layout_marginTop="20dp"
+        android:background="#528f66"
+        android:hint="Nombre"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#000000" />
+
+    <EditText
+        android:id="@+id/et_apellido"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/et_nombre"
+        android:layout_marginTop="20dp"
+        android:background="#528f66"
+        android:hint="Apellido"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#000000" />
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/et_apellido"
+        android:layout_marginTop="20dp"
+        android:background="#528f66"
+        android:hint="Email"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#000000" />
+
+    <EditText
+        android:id="@+id/et_contraseña"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/et_email"
+        android:layout_marginTop="20dp"
+        android:background="#528f66"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#000000" />
+
+    <EditText
+        android:id="@+id/et_telefono"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/et_contraseña"
+        android:layout_marginTop="20dp"
+        android:background="#528f66"
+        android:hint="Teléfono"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#000000" />
+
+    <EditText
+        android:id="@+id/et_genero"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/et_telefono"
+        android:layout_marginTop="20dp"
+        android:background="#528f66"
+        android:hint="Género"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#000000" />
+
+    <EditText
+        android:id="@+id/et_ciudad"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/et_genero"
+        android:layout_marginTop="20dp"
+        android:background="#528f66"
+        android:hint="Ciudad"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#000000" />
+
+    <EditText
+        android:id="@+id/et_pais"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/et_ciudad"
+        android:layout_marginTop="20dp"
+        android:background="#528f66"
+        android:hint="País"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#000000" />
+
+    <EditText
+        android:id="@+id/et_fecha"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/et_pais"
+        android:layout_marginTop="20dp"
+        android:background="#528f66"
+        android:hint="Fecha"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#000000" />
+
+    <Spinner
+        android:id="@+id/spinner_liga"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/et_fecha"
+        android:layout_marginTop="20dp"
+        android:background="#528f66"
+        android:textColor="#FFFFFF"
+        tools:ignore="TextSizeCheck" />
+
+    <Button
+        android:id="@+id/btn_registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinner_liga"
+        android:layout_marginTop="16dp"
+        android:text="Registrarse"
+        android:textColor="#FFFFFF"
+        android:background="#d58b00" />
+
+</RelativeLayout>
