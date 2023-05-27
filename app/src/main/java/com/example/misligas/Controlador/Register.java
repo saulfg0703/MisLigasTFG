@@ -11,7 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class Register extends AsyncTask<String, Void, String> {
+public class Register extends AsyncTask<String, Void, String> implements Configuracion{
     private Context context;
 
     public Register(Context context) {
@@ -34,7 +34,7 @@ public class Register extends AsyncTask<String, Void, String> {
             String fecha = params[9];
             String idLiga = params[10];
 
-            URL url = new URL("http://192.168.1.37/misligas/registro.php");
+            URL url = new URL("http://"+IPAdress+"/misligas/registro.php");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);

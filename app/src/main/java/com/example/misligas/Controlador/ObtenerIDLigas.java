@@ -15,7 +15,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-public class ObtenerIDLigas extends AsyncTask<Void, Void, List<String>> {
+public class ObtenerIDLigas extends AsyncTask<Void, Void, List<String>> implements Configuracion{
     private Context context;
     private Spinner spinner;
 
@@ -28,7 +28,7 @@ public class ObtenerIDLigas extends AsyncTask<Void, Void, List<String>> {
     protected List<String> doInBackground(Void... params) {
         List<String> ligas = null;
         try {
-            URL url = new URL("http://192.168.1.37/misligas/obtenerIDLigas.php");
+            URL url = new URL("http://"+IPAdress+"/misligas/obtenerIDLigas.php");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
 
