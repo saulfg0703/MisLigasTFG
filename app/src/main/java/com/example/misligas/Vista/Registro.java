@@ -78,37 +78,41 @@ public class Registro extends Activity {
             String ciudad = registroCiudad.getText().toString();
             String pais = registroPais.getText().toString();
 
+
             String fechaString = registroFecha.getText().toString();
+            String idLiga = registroIdLiga.getSelectedItem().toString();
             SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
             SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String idLiga = registroIdLiga.getSelectedItem().toString();
-            System.out.println(idLiga);
-
-            // Verificar que todos los campos obligatorios estén llenos
-            if (username.isEmpty() || password.isEmpty() || nombre.isEmpty() || apellidos.isEmpty() ||
-                    email.isEmpty() || telefono.isEmpty() || genero.isEmpty() || ciudad.isEmpty() ||
-                    pais.isEmpty() || fechaString.isEmpty() || idLiga.isEmpty()) {
-                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
-            } else {
-                Date fecha = null;
-                try {
-                    fecha = inputFormat.parse(fechaString);
-                } catch (ParseException e) {
-                    Toast.makeText(this, "Error: Fecha incorrecta", Toast.LENGTH_SHORT).show();
-                }
-
-                // Formatea la fecha al formato deseado
-                String fechaFormateada = outputFormat.format(fecha);
-
-                // Crea una instancia de Register y llámala para ejecutarla
+            if (fechaString.matches("\\d{4}-\\d{2}-\\d{2}")) {
                 Register registerTask = new Register(Registro.this);
-                registerTask.execute(username, nombre, apellidos, email, password, telefono, genero, ciudad, pais, fechaFormateada, idLiga);
+                registerTask.execute(username, nombre, apellidos, email, password, telefono, genero, ciudad, pais, fechaString, idLiga);
+            } else {
+                // Verificar que todos los campos obligatorios estén llenos
+                if (username.isEmpty() || password.isEmpty() || nombre.isEmpty() || apellidos.isEmpty() ||
+                        email.isEmpty() || telefono.isEmpty() || genero.isEmpty() || ciudad.isEmpty() ||
+                        pais.isEmpty() || fechaString.isEmpty() || idLiga.isEmpty()) {
+                    Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+                } else {
+                    Date fecha = null;
+                    try {
+                        fecha = inputFormat.parse(fechaString);
+                    } catch (ParseException e) {
+                        Toast.makeText(this, "Error: Fecha incorrecta", Toast.LENGTH_SHORT).show();
+                    }
 
+                    // Formatea la fecha al formato deseado
+                    String fechaFormateada = outputFormat.format(fecha);
+
+                    // Crea una instancia de Register y llámala para ejecutarla
+                    Register registerTask = new Register(Registro.this);
+                    registerTask.execute(username, nombre, apellidos, email, password, telefono, genero, ciudad, pais, fechaFormateada, idLiga);
+                }
+                }
+            } catch(NullPointerException e){
+                Toast.makeText(this, "Error: Algunos campos son nulos", Toast.LENGTH_SHORT).show();
             }
-        } catch (NullPointerException e) {
-            Toast.makeText(this, "Error: Algunos campos son nulos", Toast.LENGTH_SHORT).show();
         }
-    }
+
     private void limpiarCampos(){
         registroUsuario.setText("");
         registroNombre.setText("");

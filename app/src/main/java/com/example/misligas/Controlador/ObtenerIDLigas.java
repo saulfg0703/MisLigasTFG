@@ -28,7 +28,7 @@ public class ObtenerIDLigas extends AsyncTask<Void, Void, List<String>> {
     protected List<String> doInBackground(Void... params) {
         List<String> ligas = null;
         try {
-            URL url = new URL("http://192.168.1.15/misligas/obtenerIDLigas.php");
+            URL url = new URL("http://192.168.1.37/misligas/obtenerIDLigas.php");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
 

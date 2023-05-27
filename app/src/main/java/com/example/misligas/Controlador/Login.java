@@ -31,7 +31,7 @@ public class Login extends AsyncTask<String, Void, String> {
             String username = params[0];
             String password = params[1];
 
-            URL url = new URL("http://192.168.1.15/misligas/login.php");
+            URL url = new URL("http://192.168.1.37/misligas/login.php");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
