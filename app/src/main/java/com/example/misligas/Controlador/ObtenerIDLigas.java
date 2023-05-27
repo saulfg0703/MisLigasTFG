@@ -15,11 +15,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-public class ObtenerLigas extends AsyncTask<Void, Void, List<String>> {
+public class ObtenerIDLigas extends AsyncTask<Void, Void, List<String>> {
     private Context context;
     private Spinner spinner;
 
-    public ObtenerLigas(Context context, Spinner spinner) {
+    public ObtenerIDLigas(Context context, Spinner spinner) {
         this.context = context;
         this.spinner = spinner;
     }

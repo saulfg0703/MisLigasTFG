@@ -3,15 +3,12 @@ package com.example.misligas.Vista;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.misligas.Controlador.Login;
-import com.example.misligas.Controlador.ObtenerLigas;
+import com.example.misligas.Controlador.ObtenerIDLigas;
 import com.example.misligas.Controlador.Register;
 import com.example.misligas.R;
 
@@ -54,7 +51,7 @@ public class Registro extends Activity {
         registroIdLiga = findViewById(R.id.spinner_liga);
         btnRegistro = findViewById(R.id.btn_registro);
 
-        ObtenerLigas obtenerLigasTask = new ObtenerLigas(Registro.this,registroIdLiga);
+        ObtenerIDLigas obtenerLigasTask = new ObtenerIDLigas(Registro.this,registroIdLiga);
         obtenerLigasTask.execute();
 
         btnRegistro.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +120,6 @@ public class Registro extends Activity {
         registroCiudad.setText("");
         registroPais.setText("");
         registroFecha.setText("");
-        registroIdLiga.setSelection(1);
     }
 
 

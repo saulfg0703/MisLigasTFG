@@ -17,7 +17,7 @@ public class VisualizadorDatos extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.visualizador_menu);
+        setContentView(R.layout.activity_menu);
 
         // Configura la Toolbar
         toolbar = findViewById(R.id.toolbar);
@@ -27,7 +27,7 @@ public class VisualizadorDatos extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_principal, menu);
         return true;
     }
 
@@ -37,19 +37,19 @@ public class VisualizadorDatos extends AppCompatActivity {
 
         // Manejo de las opciones del menú
         if (id == R.id.opcionLiga) {
-            Toast.makeText(this, "Opción 1 seleccionada", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Liga", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.opcionEquipo) {
-            Toast.makeText(this, "Opción 2 seleccionada", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Equipo", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.opcionEstadisticas) {
-            Toast.makeText(this, "Opción 3 seleccionada", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Estadisticas", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.opcionJugadores) {
-            Toast.makeText(this, "Opción 3 seleccionada", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Jugadores", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.opcionPartidos) {
-            Toast.makeText(this, "Opción 3 seleccionada", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Partidos", Toast.LENGTH_SHORT).show();
             return true;
         }
 
