@@ -23,6 +23,12 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
     <!-- Aquí puedes agregar tus elementos de diseño para la actividad -->
 
 </LinearLayout>
