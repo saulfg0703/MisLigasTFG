@@ -18,6 +18,7 @@ import com.example.misligas.Controlador.obtenerJugadoresUsuario;
 import com.example.misligas.R;
 import com.example.misligas.fragmentos.equipoFragmento;
 import com.example.misligas.fragmentos.fragmentoEstadisticas;
+import com.example.misligas.fragmentos.fragmentoJugadores;
 import com.example.misligas.fragmentos.fragmentoLigas;
 import com.example.misligas.fragmentos.fragmentoPartidos;
 
@@ -111,7 +112,7 @@ public class VisualizadorDatos extends AppCompatActivity {
     }
 
     private void cargarFragmentoJugadores() {
-        fragmentoLigas myFragment = new fragmentoLigas();
+        fragmentoJugadores myFragment = new fragmentoJugadores();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
