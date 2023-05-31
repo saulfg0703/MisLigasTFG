@@ -10,14 +10,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.misligas.Controlador.obtenerClasificacionDelUsuario;
+
+import com.example.misligas.Controlador.obtenerClasificacionUsuario;
 import com.example.misligas.Controlador.obtenerEquiposDelUsuario;
 import com.example.misligas.Controlador.obtenerEstadisticasEquipoDelUsuario;
 import com.example.misligas.Controlador.obtenerJugadoresUsuario;
 import com.example.misligas.R;
 import com.example.misligas.fragmentos.equipoFragmento;
 import com.example.misligas.fragmentos.fragmentoEstadisticas;
-import com.example.misligas.fragmentos.fragmentoJugadores;
 import com.example.misligas.fragmentos.fragmentoLigas;
 import com.example.misligas.fragmentos.fragmentoPartidos;
 
@@ -30,10 +30,12 @@ public class VisualizadorDatos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+
         // Configura la Toolbar
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("MisLigas+");
+        obtenerClasificacionLigasDelUsuario();
     }
 
     @Override
@@ -49,13 +51,12 @@ public class VisualizadorDatos extends AppCompatActivity {
         // Manejo de las opciones del menú
         if (id == R.id.opcionLiga) {
             cargarFragmentoLiga();
-            obtenerClasificacionLigasDelUsuario();
             Toast.makeText(this, "Liga", Toast.LENGTH_SHORT).show();
         
             return true;
         } else if (id == R.id.opcionEquipo) {
             cargarFragmentoEquipo();
-            obtenerEquiposDelUsuario();
+
             Toast.makeText(this, "Equipo", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.opcionEstadisticas) {
@@ -96,8 +97,9 @@ public class VisualizadorDatos extends AppCompatActivity {
         o.execute("saulfg");
     }
     private void obtenerClasificacionLigasDelUsuario() {
-        obtenerClasificacionDelUsuario o = new obtenerClasificacionDelUsuario(VisualizadorDatos.this);
+        obtenerClasificacionUsuario o = new obtenerClasificacionUsuario(VisualizadorDatos.this);
         o.execute("saulfg");
+
     }
     private void cargarFragmentoPartidos() {
         fragmentoPartidos myFragment = new fragmentoPartidos();
@@ -109,7 +111,7 @@ public class VisualizadorDatos extends AppCompatActivity {
     }
 
     private void cargarFragmentoJugadores() {
-        fragmentoJugadores myFragment = new fragmentoJugadores();
+        fragmentoLigas myFragment = new fragmentoLigas();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -139,10 +141,7 @@ public class VisualizadorDatos extends AppCompatActivity {
     }
 
     private void cargarFragmentoLiga() {
-
-
         fragmentoLigas myFragment = new fragmentoLigas();
-
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, myFragment);

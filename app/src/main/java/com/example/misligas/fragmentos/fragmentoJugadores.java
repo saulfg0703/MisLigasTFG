@@ -12,7 +12,7 @@ import com.example.misligas.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link fragmentoJugadores#newInstance} factory method to
+ * Use the {@link fragmentoLigas#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class fragmentoJugadores extends Fragment {
@@ -39,8 +39,8 @@ public class fragmentoJugadores extends Fragment {
      * @return A new instance of fragment fragmentoJugadores.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragmentoJugadores newInstance(String param1, String param2) {
-        fragmentoJugadores fragment = new fragmentoJugadores();
+    public static fragmentoLigas newInstance(String param1, String param2) {
+        fragmentoLigas fragment = new fragmentoLigas();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,7 +60,8 @@ public class fragmentoJugadores extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragmento_jugadores, container, false);
+        View view = inflater.inflate(R.layout.fragmentoligas, container, false);
+        return view;
+
     }
 }

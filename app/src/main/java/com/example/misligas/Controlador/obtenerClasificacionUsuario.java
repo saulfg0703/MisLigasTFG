@@ -4,11 +4,12 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.example.misligas.Modelo.modeloLigaUsuario;
+import com.example.misligas.fragmentos.fragmentoLigas;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -19,13 +20,27 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class obtenerClasificacionDelUsuario extends AsyncTask<String, List<String>, List<String>> implements Configuracion {
+public class obtenerClasificacionUsuario extends AsyncTask<String, List<String>, List<String>> implements Configuracion {
     private Context context;
+   public static ArrayList<modeloLigaUsuario> clasificacion= new ArrayList<>();
 
-    public obtenerClasificacionDelUsuario(Context context) {
+
+
+    public obtenerClasificacionUsuario(Context context) {
         this.context = context;
+
+    }
+    public obtenerClasificacionUsuario() {
+
     }
 
+    public ArrayList<modeloLigaUsuario> getClasificacion() {
+        return clasificacion;
+    }
+
+    public void setClasificacion(ArrayList<modeloLigaUsuario> clasificacion) {
+        this.clasificacion = clasificacion;
+    }
 
     @Override
     protected List<String> doInBackground(String... params) {
@@ -75,11 +90,18 @@ public class obtenerClasificacionDelUsuario extends AsyncTask<String, List<Strin
 
     @Override
     protected void onPostExecute(List<String> ligas) {
-        // Verificar si se obtuvieron ligas
+
         if (ligas != null && !ligas.isEmpty()) {
             Toast.makeText(context, ligas.get(0).toString(), Toast.LENGTH_SHORT).show();
+            for (String li: ligas){
+                try {
+                    JSONObject jsonObject1 = new JSONObject(li);
+                    clasificacion.add(new modeloLigaUsuario(jsonObject1.getInt("Puntos"),jsonObject1.getString("Nombre_Equipo")));
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         } else {
-            // No se encontraron ligas
             Toast.makeText(context, "No se encontraron ligas", Toast.LENGTH_SHORT).show();
         }
     }
