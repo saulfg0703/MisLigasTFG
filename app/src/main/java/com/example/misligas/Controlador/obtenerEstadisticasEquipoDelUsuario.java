@@ -4,8 +4,12 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.example.misligas.Modelo.Estadisticas_Equipo;
+import com.example.misligas.Modelo.Jugador;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -20,6 +24,15 @@ public class obtenerEstadisticasEquipoDelUsuario  extends AsyncTask<String, List
 
     Context context;
 
+    public static ArrayList<Estadisticas_Equipo> getEstadisticas() {
+        return estadisticas;
+    }
+
+    public static void setEstadisticas(ArrayList<Estadisticas_Equipo> estadisticas) {
+        obtenerEstadisticasEquipoDelUsuario.estadisticas = estadisticas;
+    }
+
+    public static ArrayList<Estadisticas_Equipo> estadisticas = new ArrayList<>();
     public obtenerEstadisticasEquipoDelUsuario(Context context) {
         this.context = context;
     }
@@ -71,8 +84,20 @@ public class obtenerEstadisticasEquipoDelUsuario  extends AsyncTask<String, List
 
     @Override
     protected void onPostExecute(List<String> strings) {
+        estadisticas.clear(); // Limpiar la lista antes de agregar nuevos elementos
+
         if (strings != null && !strings.isEmpty()) {
-            Toast.makeText(context, strings.get(0).toString(), Toast.LENGTH_SHORT).show();
+            for (String li: strings){
+                try {
+                    JSONObject jsonObject1 = new JSONObject(li);
+                    estadisticas.add(new Estadisticas_Equipo(jsonObject1.getInt("ID"),jsonObject1.getInt("Puntos"),
+                            jsonObject1.getInt("Partidos_Jugados"),jsonObject1.getInt("Partidos_Ganados"),jsonObject1.getInt("Partidos_Perdidos"),
+                            jsonObject1.getInt("Partidos_Empatados"),jsonObject1.getInt("Goles_A_Favor"),jsonObject1.getInt("Goles_En_Contra"),jsonObject1.getInt("Diferencia_De_Goles"),
+                            jsonObject1.getInt("Tarjetas_Amarillas"),jsonObject1.getInt("Tarjetas_Rojas"),jsonObject1.getInt("ID_Equipo")));
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         } else {
             // No se encontraron ligas
             Toast.makeText(context, "No se encontraron ligas", Toast.LENGTH_SHORT).show();

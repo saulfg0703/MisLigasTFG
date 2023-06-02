@@ -3,28 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FBFBFB"
+    android:background="#d2f9e7"
     tools:context=".fragmentos.fragmentoLigas">
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:text="CLASIFICACIÓN"
+        android:textStyle="bold" />
     <TableLayout
         android:id="@+id/tabla"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp">
     </TableLayout>
+
+    <ImageView
+        android:layout_width="350px"
+        android:layout_height="350px"
+        android:background="@drawable/liga_copa"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="40dp"/>
 </FrameLayout>

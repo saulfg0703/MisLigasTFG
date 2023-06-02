@@ -22,7 +22,7 @@ import java.util.List;
 
 public class obtenerClasificacionUsuario extends AsyncTask<String, List<String>, List<String>> implements Configuracion {
     private Context context;
-   public static ArrayList<modeloLigaUsuario> clasificacion= new ArrayList<>();
+   public static ArrayList<modeloLigaUsuario> clasificacion = new ArrayList<>();
 
 
 
@@ -34,7 +34,7 @@ public class obtenerClasificacionUsuario extends AsyncTask<String, List<String>,
 
     }
 
-    public ArrayList<modeloLigaUsuario> getClasificacion() {
+    public static  ArrayList<modeloLigaUsuario> getClasificacion() {
         return clasificacion;
     }
 
@@ -90,13 +90,13 @@ public class obtenerClasificacionUsuario extends AsyncTask<String, List<String>,
 
     @Override
     protected void onPostExecute(List<String> ligas) {
-
+            clasificacion.clear(); // Limpiar la lista antes de agregar nuevos elementos
         if (ligas != null && !ligas.isEmpty()) {
-            Toast.makeText(context, ligas.get(0).toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, ligas.get(0), Toast.LENGTH_SHORT).show();
             for (String li: ligas){
                 try {
                     JSONObject jsonObject1 = new JSONObject(li);
-                    clasificacion.add(new modeloLigaUsuario(jsonObject1.getInt("Puntos"),jsonObject1.getString("Nombre_Equipo")));
+                    clasificacion.add(new modeloLigaUsuario(jsonObject1.getInt("Puntos"), jsonObject1.getString("Nombre_Equipo")));
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
@@ -105,4 +105,7 @@ public class obtenerClasificacionUsuario extends AsyncTask<String, List<String>,
             Toast.makeText(context, "No se encontraron ligas", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+
 }

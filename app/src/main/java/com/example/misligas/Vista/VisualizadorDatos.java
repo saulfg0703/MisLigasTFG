@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +16,13 @@ import com.example.misligas.Controlador.obtenerClasificacionUsuario;
 import com.example.misligas.Controlador.obtenerEquiposDelUsuario;
 import com.example.misligas.Controlador.obtenerEstadisticasEquipoDelUsuario;
 import com.example.misligas.Controlador.obtenerJugadoresUsuario;
+import com.example.misligas.Controlador.obtenerPartidosDelUsuario;
+import com.example.misligas.Modelo.Equipo;
+import com.example.misligas.Modelo.Estadisticas_Equipo;
+import com.example.misligas.Modelo.Jugador;
+import com.example.misligas.Modelo.Partido;
+import com.example.misligas.Modelo.Usuario;
+import com.example.misligas.Modelo.modeloLigaUsuario;
 import com.example.misligas.R;
 import com.example.misligas.fragmentos.equipoFragmento;
 import com.example.misligas.fragmentos.fragmentoEstadisticas;
@@ -22,21 +30,37 @@ import com.example.misligas.fragmentos.fragmentoJugadores;
 import com.example.misligas.fragmentos.fragmentoLigas;
 import com.example.misligas.fragmentos.fragmentoPartidos;
 
+import java.util.ArrayList;
+
 public class VisualizadorDatos extends AppCompatActivity {
 
     private Toolbar toolbar;
+    private Usuario usuario;
+    private ArrayList<modeloLigaUsuario> arrayClasificacion;
+    private ArrayList<Equipo> arrayEquipos;
+    private ArrayList<Estadisticas_Equipo> arrayEstadisticas;
+    private ArrayList<Jugador> arrayJugadores;
+    private ArrayList<Partido> arrayPartidos;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        Intent intent = getIntent();
+        usuario = (Usuario) intent.getSerializableExtra("usuario");
 
         // Configura la Toolbar
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("MisLigas+");
-        obtenerClasificacionLigasDelUsuario();
+
+        obtenerClasificacionLigasDelUsuario(usuario.getUsuario());
+        obtenerEquiposDelUsuario(usuario.getUsuario());
+        obtenerJugadores(usuario.getUsuario());
+        obtenerEstadisticasUsuario(usuario.getUsuario());
+        obtenerPartidos(usuario.getUsuario());
     }
 
     @Override
@@ -51,28 +75,22 @@ public class VisualizadorDatos extends AppCompatActivity {
 
         // Manejo de las opciones del menú
         if (id == R.id.opcionLiga) {
-            cargarFragmentoLiga();
-            Toast.makeText(this, "Liga", Toast.LENGTH_SHORT).show();
-        
+            cargarFragmentoLiga(arrayClasificacion);
             return true;
         } else if (id == R.id.opcionEquipo) {
-            cargarFragmentoEquipo();
-
+            cargarFragmentoEquipo(arrayEquipos);
             Toast.makeText(this, "Equipo", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.opcionEstadisticas) {
-            cargarFragmentoEstadisticas();
-            obtenerEstadisticasUsuario();
+            cargarFragmentoEstadisticas(arrayEstadisticas);
             Toast.makeText(this, "Estadisticas", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.opcionJugadores) {
-            cargarFragmentoJugadores();
-            obtenerJugadores();
+            cargarFragmentoJugadores(arrayJugadores);
             Toast.makeText(this, "Jugadores", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.opcionPartidos) {
-            cargarFragmentoPartidos();
-            obtenerPartidos();
+            cargarFragmentoPartidos(arrayPartidos);
             Toast.makeText(this, "Partidos", Toast.LENGTH_SHORT).show();
             return true;
         }
@@ -80,30 +98,32 @@ public class VisualizadorDatos extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void obtenerPartidos() {
+    private void obtenerPartidos(String nombre_usuario) {
+        obtenerPartidosDelUsuario e = new obtenerPartidosDelUsuario(VisualizadorDatos.this);
+        e.execute(nombre_usuario);
     }
 
-    private void obtenerJugadores() {
+    private void obtenerJugadores(String nombre_usuario) {
         obtenerJugadoresUsuario e = new obtenerJugadoresUsuario(VisualizadorDatos.this);
-        e.execute("saulfg");
+        e.execute(nombre_usuario);
     }
 
-    private void obtenerEstadisticasUsuario() {
+    private void obtenerEstadisticasUsuario(String nombre_usuario) {
         obtenerEstadisticasEquipoDelUsuario e = new obtenerEstadisticasEquipoDelUsuario(VisualizadorDatos.this);
-        e.execute("saulfg");
+        e.execute(nombre_usuario);
     }
 
-    private void obtenerEquiposDelUsuario() {
+    private void obtenerEquiposDelUsuario(String nombre_usuario) {
         obtenerEquiposDelUsuario o = new obtenerEquiposDelUsuario(VisualizadorDatos.this);
-        o.execute("saulfg");
+        o.execute(nombre_usuario);
     }
-    private void obtenerClasificacionLigasDelUsuario() {
+    private void obtenerClasificacionLigasDelUsuario(String nombre_usuario) {
         obtenerClasificacionUsuario o = new obtenerClasificacionUsuario(VisualizadorDatos.this);
-        o.execute("saulfg");
+        o.execute(nombre_usuario);
 
     }
-    private void cargarFragmentoPartidos() {
-        fragmentoPartidos myFragment = new fragmentoPartidos();
+    private void cargarFragmentoPartidos(ArrayList<Partido> arrayPartidos) {
+        fragmentoPartidos myFragment = fragmentoPartidos.newInstance(arrayPartidos);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, myFragment);
@@ -111,18 +131,8 @@ public class VisualizadorDatos extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    private void cargarFragmentoJugadores() {
-        fragmentoJugadores myFragment = new fragmentoJugadores();
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, myFragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-    }
-
-    private void cargarFragmentoEstadisticas() {
-        fragmentoEstadisticas myFragment = new fragmentoEstadisticas();
+    private void cargarFragmentoJugadores(ArrayList<Jugador> arrayJugadores) {
+        fragmentoJugadores myFragment = fragmentoJugadores.newInstance(arrayJugadores);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -131,9 +141,8 @@ public class VisualizadorDatos extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    private void cargarFragmentoEquipo() {
-        equipoFragmento myFragment = new equipoFragmento();
-
+    private void cargarFragmentoEstadisticas(ArrayList<Estadisticas_Equipo> arrayEstadisticas) {
+        fragmentoEstadisticas myFragment = fragmentoEstadisticas.newInstance(arrayEstadisticas);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, myFragment);
@@ -141,8 +150,17 @@ public class VisualizadorDatos extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    private void cargarFragmentoLiga() {
-        fragmentoLigas myFragment = new fragmentoLigas();
+    private void cargarFragmentoEquipo(ArrayList<Equipo> arrayEquipos) {
+        equipoFragmento myFragment = equipoFragmento.newInstance(arrayEquipos);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, myFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    private void cargarFragmentoLiga(ArrayList<modeloLigaUsuario> arrayClasificacion) {
+        fragmentoLigas myFragment = fragmentoLigas.newInstance(arrayClasificacion);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, myFragment);

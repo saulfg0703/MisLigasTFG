@@ -4,8 +4,12 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.example.misligas.Modelo.Equipo;
+import com.example.misligas.Modelo.modeloLigaUsuario;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -18,6 +22,16 @@ import java.util.List;
 
 public class obtenerEquiposDelUsuario extends AsyncTask<String, List<String>, List<String>> implements Configuracion{
     private Context context;
+
+    public static ArrayList<Equipo> getEquipos() {
+        return equipos;
+    }
+
+    public static void setEquipos(ArrayList<Equipo> equipos) {
+        obtenerEquiposDelUsuario.equipos = equipos;
+    }
+
+    public static ArrayList<Equipo> equipos = new ArrayList<>();
 
     public obtenerEquiposDelUsuario(Context context) {
         this.context = context;
@@ -73,8 +87,18 @@ public class obtenerEquiposDelUsuario extends AsyncTask<String, List<String>, Li
 
     @Override
     protected void onPostExecute(List<String> strings) {
+        equipos.clear(); // Limpiar la lista antes de agregar nuevos elementos
         if (strings != null && !strings.isEmpty()) {
-            Toast.makeText(context, strings.get(0).toString(), Toast.LENGTH_SHORT).show();
+            for (String li: strings){
+                try {
+                    JSONObject jsonObject1 = new JSONObject(li);
+                    equipos.add(new Equipo(jsonObject1.getInt("ID_Equipo"),jsonObject1.getString("Nombre_Equipo"),
+                            jsonObject1.getString("Entrenador_Equipo"),jsonObject1.getString("Presidente_Equipo"),
+                            jsonObject1.getString("Ciudad_Equipo"),jsonObject1.getInt("ID_Liga")));
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         } else {
             // No se encontraron ligas
             Toast.makeText(context, "No se encontraron ligas", Toast.LENGTH_SHORT).show();

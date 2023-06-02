@@ -18,14 +18,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Vista.VisualizadorDatos"
-            android:exported="false"
-            android:label="@string/title_activity_visualizador_menu"
-            android:theme="@style/Theme.MisLigas" />
-        <activity
             android:name=".Vista.Registro"
             android:exported="false"
             android:label="@string/title_activity_registro"
+            android:theme="@style/Theme.MisLigas" />
+        <activity
+            android:name=".Vista.VisualizadorDatos"
+            android:exported="false"
+            android:label="@string/title_activity_visualizador_datos"
             android:theme="@style/Theme.MisLigas" />
         <activity
             android:name=".Vista.MainActivity"
