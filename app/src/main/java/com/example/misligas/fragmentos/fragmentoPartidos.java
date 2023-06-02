@@ -37,8 +37,8 @@ public class fragmentoPartidos extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_equipo_fragmento, container, false);
-        tableLayout = view.findViewById(R.id.tableEquipos);
+        View view = inflater.inflate(R.layout.fragment_fragmento_partidos, container, false);
+        tableLayout = view.findViewById(R.id.tablePartidos);
         arrayList = obtenerPartidosDelUsuario.getPartidos();
         mostrarDatosEnTabla(arrayList);
         return view;
