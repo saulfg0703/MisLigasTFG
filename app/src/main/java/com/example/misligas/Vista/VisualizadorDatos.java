@@ -79,19 +79,15 @@ public class VisualizadorDatos extends AppCompatActivity {
             return true;
         } else if (id == R.id.opcionEquipo) {
             cargarFragmentoEquipo(arrayEquipos);
-            Toast.makeText(this, "Equipo", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.opcionEstadisticas) {
             cargarFragmentoEstadisticas(arrayEstadisticas);
-            Toast.makeText(this, "Estadisticas", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.opcionJugadores) {
             cargarFragmentoJugadores(arrayJugadores);
-            Toast.makeText(this, "Jugadores", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.opcionPartidos) {
             cargarFragmentoPartidos(arrayPartidos);
-            Toast.makeText(this, "Partidos", Toast.LENGTH_SHORT).show();
             return true;
         }
 
