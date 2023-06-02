@@ -49,7 +49,7 @@ public class fragmentoPartidos extends Fragment {
         TableRow encabezado = new TableRow(requireContext());
 
         TextView equipoLocal = new TextView(requireContext());
-        equipoLocal.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 0.7f));
+        equipoLocal.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 0.8f));
         equipoLocal.setBackgroundColor(Color.parseColor("#F29F05"));
         equipoLocal.setTextColor(Color.BLACK);
         equipoLocal.setPadding(8, 8, 8, 8);
@@ -63,28 +63,28 @@ public class fragmentoPartidos extends Fragment {
         equipoVisitante.setText("Visitante");
 
         TextView resultadoLabel = new TextView(requireContext());
-        resultadoLabel.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1.2f));
+        resultadoLabel.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1.3f));
         resultadoLabel.setBackgroundColor(Color.parseColor("#F29F05"));
         resultadoLabel.setTextColor(Color.BLACK);
         resultadoLabel.setPadding(8, 8, 8, 8);
         resultadoLabel.setText("Resultado");
 
         TextView lugarLabel = new TextView(requireContext());
-        lugarLabel.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 0.7f));
+        lugarLabel.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 0.9f));
         lugarLabel.setBackgroundColor(Color.parseColor("#F29F05"));
         lugarLabel.setTextColor(Color.BLACK);
         lugarLabel.setPadding(8, 8, 8, 8);
         lugarLabel.setText("Lugar");
 
         TextView fechaLabel = new TextView(requireContext());
-        fechaLabel.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1.2f));
+        fechaLabel.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1.4f));
         fechaLabel.setBackgroundColor(Color.parseColor("#F29F05"));
         fechaLabel.setTextColor(Color.BLACK);
         fechaLabel.setPadding(8, 8, 8, 8);
         fechaLabel.setText("Fecha");
 
         TextView incidenciasLabel = new TextView(requireContext());
-        incidenciasLabel.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1.3f));
+        incidenciasLabel.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1.4f));
         incidenciasLabel.setBackgroundColor(Color.parseColor("#F29F05"));
         incidenciasLabel.setTextColor(Color.BLACK);
         incidenciasLabel.setPadding(8, 8, 8, 8);
@@ -118,35 +118,35 @@ public class fragmentoPartidos extends Fragment {
             local.setText(String.valueOf(partido.getID_EquipoLocal()));
 
             TextView visitante = new TextView(requireContext());
-            visitante.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 0.7f));
+            visitante.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1.2f));
             visitante.setBackgroundColor(Color.parseColor("#528F66"));
             visitante.setTextColor(Color.WHITE);
             visitante.setPadding(8, 8, 8, 8);
             visitante.setText(String.valueOf(partido.getID_EquipoVisitante()));
 
             TextView resultadoPartido = new TextView(requireContext());
-            resultadoPartido.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 0.7f));
+            resultadoPartido.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1.2f));
             resultadoPartido.setBackgroundColor(Color.parseColor("#528F66"));
             resultadoPartido.setTextColor(Color.WHITE);
             resultadoPartido.setPadding(8, 8, 8, 8);
             resultadoPartido.setText(String.valueOf(partido.getResultadoEncuentro()));
 
             TextView lugarPartido = new TextView(requireContext());
-            lugarPartido.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+            lugarPartido.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 0.7f));
             lugarPartido.setBackgroundColor(Color.parseColor("#528F66"));
             lugarPartido.setTextColor(Color.WHITE);
             lugarPartido.setPadding(8, 8, 8, 8);
             lugarPartido.setText(String.valueOf(partido.getLugarEncuentro()));
 
             TextView fechaPartido = new TextView(requireContext());
-            fechaPartido.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1.2f));
+            fechaPartido.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1.4f));
             fechaPartido.setBackgroundColor(Color.parseColor("#528F66"));
             fechaPartido.setTextColor(Color.WHITE);
             fechaPartido.setPadding(8, 8, 8, 8);
             fechaPartido.setText(String.valueOf(partido.getFechaEncuentro()));
 
             TextView incidenciasPartido = new TextView(requireContext());
-            incidenciasPartido.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+            incidenciasPartido.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1.3f));
             incidenciasPartido.setBackgroundColor(Color.parseColor("#528F66"));
             incidenciasPartido.setTextColor(Color.WHITE);
             incidenciasPartido.setPadding(8, 8, 8, 8);
