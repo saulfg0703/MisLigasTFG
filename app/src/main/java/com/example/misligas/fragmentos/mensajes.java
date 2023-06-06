@@ -2,6 +2,8 @@ package com.example.misligas.fragmentos;
 
 import static com.example.misligas.Controlador.Configuracion.IPAdress;
 
+import android.app.Activity;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -16,7 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.Request;
+import com.android. volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -33,7 +35,7 @@ import java.util.Map;
  * Use the {@link mensajes#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class mensajes extends Fragment {
+public class mensajes extends Fragment  {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -87,6 +89,7 @@ public class mensajes extends Fragment {
         asunto = view.findViewById(R.id.asuntoEditText);
         mensaje = view.findViewById(R.id.mensajeEditText);
         enviarM = view.findViewById(R.id.enviarMensajeBoton);
+        enviarM.setBackgroundTintList(getResources().getColorStateList(R.color.colorNaranja));
 
         enviarM.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,6 +8,7 @@
     android:background="#528f66"
     tools:context=".Vista.VisualizadorDatos">
 
+
     <!-- Agrega una Toolbar en lugar de un menú -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -20,27 +21,52 @@
         android:popupTheme="@style/ThemeOverlay.AppCompat.Light">
     </androidx.appcompat.widget.Toolbar>
 
-
-    <!-- activity_contact.xml -->
-
-
-
-
-
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
+        <!-- Agrega el mensaje de bienvenida -->
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="266dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:src="@drawable/logomisligas" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bienvenido a "
+            android:textColor="#56EB5B"
+            android:textSize="42sp"
+            android:layout_marginTop="90dp"
+            android:gravity="center"
+            android:textStyle="bold"/>
+
+        <!-- Agrega el correo electrónico -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Contacta con nosotros:"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="500dp"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="adminsmisligasapp@gmail.com"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="550dp"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
 
     </FrameLayout>
 
 
 
-    <!-- Aquí puedes agregar tus elementos de diseño para la actividad -->
-
-
-
-    <!-- activity_contact.xml -->
-
-
 </LinearLayout>
+

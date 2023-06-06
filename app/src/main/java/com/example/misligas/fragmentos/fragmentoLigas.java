@@ -53,6 +53,7 @@ public class fragmentoLigas extends Fragment {
         mostrarDatosEnTabla(arrayList);
         idLiga = view.findViewById(R.id.recogerIDLiga);
         botonBuscarLiga = view.findViewById(R.id.botonBuscarLiga);
+        botonBuscarLiga.setBackgroundTintList(getResources().getColorStateList(R.color.colorNaranja));
 
         botonBuscarLiga.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,5 +1,5 @@
 package com.example.misligas.Controlador;
 
 public interface Configuracion {
-    String IPAdress = "172.20.10.2";
+    String IPAdress = "172.16.178.36";
 }
