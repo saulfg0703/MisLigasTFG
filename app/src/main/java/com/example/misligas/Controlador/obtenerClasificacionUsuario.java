@@ -92,7 +92,7 @@ public class obtenerClasificacionUsuario extends AsyncTask<String, List<String>,
     protected void onPostExecute(List<String> ligas) {
             clasificacion.clear(); // Limpiar la lista antes de agregar nuevos elementos
         if (ligas != null && !ligas.isEmpty()) {
-            Toast.makeText(context, ligas.get(0), Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(context, ligas.get(0), Toast.LENGTH_SHORT).show();
             for (String li: ligas){
                 try {
                     JSONObject jsonObject1 = new JSONObject(li);

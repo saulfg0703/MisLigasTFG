@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#528f66"
+    android:orientation="vertical"
+    tools:context=".fragmentos.mensajes">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="24dp"
+        android:text="Contacto con el administrador"
+        android:textAlignment="center"
+        android:textColor="#333333"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/asuntoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:background="#C8E6C9"
+        android:hint="Asunto"
+        android:padding="12dp"
+        android:textColor="#333333"
+        android:textColorHint="#808080" />
+
+    <EditText
+        android:id="@+id/mensajeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:background="#C8E6C9"
+        android:hint="Mensaje"
+        android:minLines="5"
+        android:padding="12dp"
+        android:textColor="#333333"
+        android:textColorHint="#808080" />
+
+    <Button
+        android:id="@+id/enviarMensajeBoton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:background="#558B2F"
+        android:onClick="enviarMensaje"
+        android:padding="12dp"
+        android:text="Enviar"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+</LinearLayout>

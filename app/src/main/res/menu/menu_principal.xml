@@ -1,4 +1,5 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/opcionLiga"
         android:title="Mi Liga" />
@@ -14,4 +15,7 @@
     <item
         android:id="@+id/opcionPartidos"
         android:title="Mis Partidos" />
+    <item
+        android:id="@+id/contactarAdmin"
+        android:title="Contacto " />
 </menu>

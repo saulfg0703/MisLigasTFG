@@ -1,27 +1,33 @@
 package com.example.misligas.Modelo;
 
-public class modeloLigaUsuario {
-    private int puntos;
-    private String nombreEquipo;
+import com.google.gson.annotations.SerializedName;
 
-    public modeloLigaUsuario(int puntos, String nombreEquipo) {
-        this.puntos = puntos;
-        this.nombreEquipo = nombreEquipo;
+public class modeloLigaUsuario {
+
+    @SerializedName("Puntos")
+    private int Puntos;
+
+    @SerializedName("Nombre_Equipo")
+    private String Nombre_Equipo;
+
+    public modeloLigaUsuario(int puntos, String nombre_Equipo) {
+        Puntos = puntos;
+        Nombre_Equipo = nombre_Equipo;
     }
 
     public int getPuntos() {
-        return puntos;
+        return Puntos;
     }
 
     public void setPuntos(int puntos) {
-        this.puntos = puntos;
+        Puntos = puntos;
     }
 
-    public String getNombreEquipo() {
-        return nombreEquipo;
+    public String getNombre_Equipo() {
+        return Nombre_Equipo;
     }
 
-    public void setNombreEquipo(String nombreEquipo) {
-        this.nombreEquipo = nombreEquipo;
+    public void setNombre_Equipo(String nombre_Equipo) {
+        Nombre_Equipo = nombre_Equipo;
     }
 }

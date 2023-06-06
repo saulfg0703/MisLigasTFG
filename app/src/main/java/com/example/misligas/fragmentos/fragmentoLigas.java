@@ -4,25 +4,37 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.misligas.Controlador.dataBaseManager;
 import com.example.misligas.Controlador.obtenerClasificacionUsuario;
-import com.example.misligas.Modelo.Liga;
 import com.example.misligas.Modelo.modeloLigaUsuario;
 import com.example.misligas.R;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
 
 public class fragmentoLigas extends Fragment {
 
     private TableLayout tableLayout;
     private ArrayList<modeloLigaUsuario> arrayList;
+
+    private ExecutorService executorService;
+    public EditText idLiga;
+    public Button botonBuscarLiga;
+    dataBaseManager DataBaseManager;
+    String idBuscar;
 
     public fragmentoLigas(ArrayList<modeloLigaUsuario> arrayEquipos) {
         this.arrayList = arrayEquipos;
@@ -39,6 +51,18 @@ public class fragmentoLigas extends Fragment {
         tableLayout = view.findViewById(R.id.tabla);
         arrayList = obtenerClasificacionUsuario.getClasificacion();
         mostrarDatosEnTabla(arrayList);
+        idLiga = view.findViewById(R.id.recogerIDLiga);
+        botonBuscarLiga = view.findViewById(R.id.botonBuscarLiga);
+
+        botonBuscarLiga.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                idBuscar = idLiga.getText().toString();
+            realizarConsulta(idBuscar);
+
+            }
+        });
+    //    mostrarDatosEnTabla(arrayList);
         return view;
     }
 
@@ -90,7 +114,7 @@ public class fragmentoLigas extends Fragment {
             nombreEquipoTextView.setBackgroundColor(Color.parseColor("#24613B"));
             nombreEquipoTextView.setTextColor(Color.WHITE);
             nombreEquipoTextView.setPadding(8, 8, 8, 8);
-            nombreEquipoTextView.setText(liga.getNombreEquipo());
+            nombreEquipoTextView.setText(liga.getNombre_Equipo());
 
             TextView puntosTextView = new TextView(requireContext());
             puntosTextView.setLayoutParams(new TableRow.LayoutParams(
@@ -113,4 +137,27 @@ public class fragmentoLigas extends Fragment {
         }
     }
 
+    private void realizarConsulta(String id) {
+        DataBaseManager = new dataBaseManager();
+        this.arrayList.clear();
+        DataBaseManager.makeDatabaseRequest(id).observe(this, new Observer<List<modeloLigaUsuario>>() {
+            @Override
+            public void onChanged(List<modeloLigaUsuario> equipos) {
+                // Realizar las acciones necesarias con la lista de equipos
+                for (modeloLigaUsuario equipo : equipos) {
+                    arrayList.add(equipo);
+                    Log.d(DataBaseManager.TAG, "Equipo: " + equipo.getNombre_Equipo() + ", Puntos: " + equipo.getPuntos());
+                }
+
+                llamarMostrarTabla(arrayList); // Actualizar la tabla dentro del onChanged()
+            }
+        });
+    }
+
+    private void llamarMostrarTabla(ArrayList<modeloLigaUsuario> arrayList) {
+        mostrarDatosEnTabla(this.arrayList);
+    }
+
+
 }
+
